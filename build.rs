@@ -1,4 +1,6 @@
 use std::env;
+extern crate neon_build;
+extern crate cc;
 
 fn main() {
     if cfg!(windows) {
