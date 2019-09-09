@@ -17,14 +17,14 @@ fn main() {
     // 1. Copy the native runtime library into the build directory.
     copy_native_library(&native_from, &native_to);
 
-	// 1.5 Buld a load delay hook for windows/electron
-	if cfg!(windows) {
-		build_delay_load_hook();
-	}
 
     // 2. Build the object file from source using node-gyp.
     build_object_file(&native_to);
 
+	// 2.5 Buld a load delay hook for windows/electron
+	if cfg!(windows) {
+		build_delay_load_hook();
+	}
 
     // 3. Link the library from the object file using gcc.
     link_library(&native_to);
